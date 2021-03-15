@@ -11,17 +11,20 @@ import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar, IconButton } from "@material-ui/core";
 import { useStateValue } from "../StateProvider";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="header">
       <div className="header__left">
-        <img
-          src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
-          alt="you will get  soon"
-        />
+        <Link to="/" className="home__logo">
+          <img
+            src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
+            alt="home"
+          />
+        </Link>
 
         <div className="header__search">
           <SearchIcon />

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useStateValue } from "../StateProvider";
 import "../styles/MessageSender.css";
 import db from "../firebase";
-import firebase from "firebase";
 
 function MessageSender() {
   const handleSubmit = (e) => {
@@ -24,7 +23,7 @@ function MessageSender() {
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="messageSender">

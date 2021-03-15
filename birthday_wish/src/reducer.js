@@ -1,9 +1,13 @@
 export const initialState = {
   user: null,
+  birthdays: [],
+  loading: false,
 };
 
 export const actionTypes = {
   SET_USER: "SET_USER",
+  LOADING: "LOADING",
+  DISPLAY_BIRTHDAYS: "DISPLAY_BIRTHDAYS",
 };
 
 const reducer = (state, action) => {
@@ -12,6 +16,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+
+    case actionTypes.LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionTypes.DISPLAY_BIRTHDAYS:
+      return {
+        ...state,
+        birthdays: action.payload,
+        loading: false,
       };
 
     default:
