@@ -5,11 +5,15 @@ import { useStateValue } from "../StateProvider";
 import "../styles/MessageSender.css";
 import db from "../firebase";
 
-function MessageSender() {
+function MessageSender({ birthday }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("posts").add({
+    // get reference to posts in birthday
+    const ref = db.collection("birthdays").doc(birthday.id).collection("posts");
+
+    // add to posts
+    ref.add({
       message: input,
       profilePicture: user.photoURL,
       username: user.displayName,
@@ -46,6 +50,9 @@ function MessageSender() {
           </button>
         </form>
       </div>
+      <h1>
+        {birthday ? `Happy Birthday ${birthday.data.firstname}!` : `loading...`}
+      </h1>
     </div>
   );
 }

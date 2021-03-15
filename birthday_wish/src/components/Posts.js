@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Post from "./Post";
 import "../styles/Posts.css";
-import db from "../firebase";
 
-function Posts() {
-  const [posts, setPosts] = useState([]);
-
-  // get all data from database
-  useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-    });
-  }, []);
-
+function Posts({ posts }) {
   return (
     <div className="posts">
       {posts.map((post) => (

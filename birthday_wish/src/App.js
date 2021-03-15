@@ -21,15 +21,11 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/birthdayboard/:id">
+              <Route path="/birthdayboard/:birthdayId">
                 <BirthdayBoard />
               </Route>
             </Switch>
           </Router>
-          {/* <MessageSender />
-          <div className="app__body">
-            <Posts />
-          </div> */}
         </>
       )}
     </div>

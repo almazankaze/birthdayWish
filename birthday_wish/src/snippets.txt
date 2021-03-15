@@ -1,0 +1,33 @@
+db.collection("birthdays")
+      .where(firebase.firestore.FieldPath.documentId(), "==", birthdayId)
+      .limit(1)
+      .onSnapshot((snapshot) => {
+        setBirthday({ id: snapshot.docs[0].id, data: snapshot.docs[0].data() });
+
+        snapshot.docs[0].ref.collection("posts").onSnapshot((snapshot) => {
+          setPosts(
+            snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+          );
+        });
+      });
+
+
+      // get specific birthday from database
+      await db
+        .collection("birthdays")
+        .where(firebase.firestore.FieldPath.documentId(), "==", birthdayId)
+        .limit(1)
+        .get()
+        .then((result) => {
+          setBirthday({
+            id: result.docs[0].id,
+            data: result.docs[0].data(),
+          });
+
+          // get all posts associated with birthday
+          result.docs[0].ref.collection("posts").onSnapshot((snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+            );
+          });
+        });

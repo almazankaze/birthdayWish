@@ -7,6 +7,7 @@ export const initialState = {
 export const actionTypes = {
   SET_USER: "SET_USER",
   LOADING: "LOADING",
+  DISPLAY_POSTS: "DISPLAY_POSTS",
   DISPLAY_BIRTHDAYS: "DISPLAY_BIRTHDAYS",
 };
 
@@ -22,6 +23,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case actionTypes.DISPLAY_POSTS:
+      return {
+        ...state,
+        loading: false,
       };
     case actionTypes.DISPLAY_BIRTHDAYS:
       return {
