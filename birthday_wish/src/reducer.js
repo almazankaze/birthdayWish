@@ -9,6 +9,7 @@ export const actionTypes = {
   LOADING: "LOADING",
   DISPLAY_POSTS: "DISPLAY_POSTS",
   DISPLAY_BIRTHDAYS: "DISPLAY_BIRTHDAYS",
+  ADD_BIRTHDAY: "ADD_BIRTHDAY",
 };
 
 const reducer = (state, action) => {
@@ -33,6 +34,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         birthdays: action.payload,
+        loading: false,
+      };
+    case actionTypes.ADD_BIRTHDAY:
+      return {
+        ...state,
         loading: false,
       };
 

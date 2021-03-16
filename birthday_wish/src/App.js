@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import { useStateValue } from "./StateProvider";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BirthdayBoard from "./pages/BirthdayBoard";
+import CreateBirthday from "./pages/CreateBirthday";
 
 function App() {
   const [{ user }] = useStateValue();
@@ -20,6 +21,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route path="/createbirthday">
+                <CreateBirthday />
               </Route>
               <Route path="/birthdayboard/:birthdayId">
                 <BirthdayBoard />

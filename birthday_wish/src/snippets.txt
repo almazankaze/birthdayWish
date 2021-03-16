@@ -31,3 +31,10 @@ db.collection("birthdays")
             );
           });
         });
+
+        // add new birthday
+    db.collection("birthdays")
+      .add({ firstname: "jorge", lastname: "lopez" })
+      .then((result) => {
+        result.collection("posts").add();
+      });

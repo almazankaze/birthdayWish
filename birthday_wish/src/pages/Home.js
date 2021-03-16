@@ -34,6 +34,7 @@ function Home() {
   } else
     return (
       <div className="home">
+        <Link to="/createbirthday">Create Board</Link>
         {birthdays.map((birthday) => (
           <Link key={birthday.id} to={`birthdayboard/${birthday.id}`}>
             {`${birthday.data.firstname} ${birthday.data.lastname} `}
