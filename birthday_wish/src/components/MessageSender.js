@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useStateValue } from "../StateProvider";
 import "../styles/MessageSender.css";
 import db from "../firebase";
+import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
 
 function MessageSender({ birthday }) {
@@ -19,19 +20,25 @@ function MessageSender({ birthday }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // get reference to posts in birthday
-    const ref = db.collection("birthdays").doc(birthday.id).collection("posts");
+    if (input) {
+      // get reference to posts in birthday
+      const ref = db
+        .collection("birthdays")
+        .doc(birthday.id)
+        .collection("posts");
 
-    // add to posts
-    ref.add({
-      message: input,
-      profilePicture: user.photoURL,
-      username: user.displayName,
-      image: imageUrl,
-    });
+      // add to posts
+      ref.add({
+        message: input,
+        profilePicture: user.photoURL,
+        username: user.displayName,
+        image: imageUrl,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+      });
 
-    setInput("");
-    setImageUrl("");
+      setInput("");
+      setImageUrl("");
+    }
   };
 
   const [input, setInput] = useState("");
@@ -64,9 +71,9 @@ function MessageSender({ birthday }) {
           </button>
         </form>
       </div>
-      <h2>
+      <h1>
         {birthday ? `Happy Birthday ${birthday.data.firstname}!` : `loading...`}
-      </h2>
+      </h1>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 .post {
-  width: 20rem;
-  height: fit-content;
+  background-color: white;
+  display: inline-block;
   border: 1px solid gray;
   border-radius: 1rem;
-  margin: 1rem 0.5rem;
-  background-color: white;
+  margin: 0 0 1em;
+  width: 18rem;
 }
 
 .post__top {
@@ -29,4 +29,10 @@
 
 .post__image > img {
   width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .post {
+    width: 100%;
+  }
 }

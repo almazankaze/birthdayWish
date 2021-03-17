@@ -4,6 +4,7 @@ import db from "../firebase";
 import { useStateValue } from "../StateProvider";
 import Loading from "./Loader";
 import "../styles/NewBirthdayForm.css";
+import firebase from "firebase";
 
 function NewBirthdayForm() {
   const addBirthday = async () => {
@@ -16,6 +17,7 @@ function NewBirthdayForm() {
         .add({
           firstname: firstName,
           lastname: lastName,
+          created: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then((ref) => {
           setNewId(ref.id);

@@ -11,7 +11,7 @@ function Home() {
       dispatch({ type: "LOADING" });
 
       // get all birthdays from database
-      const snapShot = await db.collection("birthdays").get();
+      const snapShot = await db.collection("birthdays").orderBy('created', 'desc').get();
       const array = snapShot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),

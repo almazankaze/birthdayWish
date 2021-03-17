@@ -6,6 +6,7 @@ import firebase from "firebase";
 import { useParams } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import Loading from "../components/Loader";
+import background from "../images/birthdayBG.jpg";
 
 function BirthdayBoard() {
   const [birthday, setBirthday] = useState(null);
@@ -28,11 +29,14 @@ function BirthdayBoard() {
         setBirthday(obj);
 
         // get posts
-        resp1.docs[0].ref.collection("posts").onSnapshot((snapshot) => {
-          setPosts(
-            snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
-          );
-        });
+        resp1.docs[0].ref
+          .collection("posts")
+          .orderBy("created", "desc")
+          .onSnapshot((snapshot) => {
+            setPosts(
+              snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+            );
+          });
       }
 
       dispatch({ type: "DISPLAY_POSTS" });
@@ -52,7 +56,10 @@ function BirthdayBoard() {
     return <Loading />;
   } else {
     return (
-      <div className="birthdayBoard">
+      <div
+        className="birthdayBoard"
+        style={{ backgroundImage: `url(${background})` }}
+      >
         <MessageSender birthday={birthday} />
         <Posts posts={posts} />
       </div>
