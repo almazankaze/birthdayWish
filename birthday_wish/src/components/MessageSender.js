@@ -4,8 +4,18 @@ import { useState } from "react";
 import { useStateValue } from "../StateProvider";
 import "../styles/MessageSender.css";
 import db from "../firebase";
+import { makeStyles } from "@material-ui/core/styles";
 
 function MessageSender({ birthday }) {
+  const useStyles = makeStyles((theme) => ({
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+    },
+  }));
+
+  const classes = useStyles();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +42,7 @@ function MessageSender({ birthday }) {
   return (
     <div className="messageSender">
       <div className="messageSender__top">
-        <Avatar src={user.photoURL} />
+        <Avatar src={user.photoURL} className={classes.large} />
         <form>
           <input
             value={input}
@@ -45,14 +55,18 @@ function MessageSender({ birthday }) {
             onChange={(e) => setImageUrl(e.target.value)}
             placeholder="image URL (Optional)"
           />
-          <button onClick={handleSubmit} type="submit">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn primary-btn post-btn"
+          >
             Post
           </button>
         </form>
       </div>
-      <h1>
+      <h2>
         {birthday ? `Happy Birthday ${birthday.data.firstname}!` : `loading...`}
-      </h1>
+      </h2>
     </div>
   );
 }

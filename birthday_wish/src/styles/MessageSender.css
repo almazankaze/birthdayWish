@@ -1,29 +1,43 @@
 .messageSender {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 30px;
   flex-direction: column;
-  width: 50%;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .messageSender__top {
   display: flex;
-  padding: 15px;
+  padding: 30px;
 }
 
 .messageSender__top > form {
-  flex: 1;
   display: flex;
+  flex-direction: column;
 }
 
 .messageSender__top > form > input {
   outline-width: 0;
   border: none;
   padding: 5px 20px;
-  margin: 0 10px;
+  margin: 10px 10px;
   border-radius: 999px;
   background-color: #eff2f5;
 }
 
-.messageSender__input {
-  flex: 1;
+@media (min-width: 768px) {
+  .messageSender {
+    width: 100%;
+  }
+
+  .messageSender__top > form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .messageSender__top > form > input {
+    margin: 0 10px;
+  }
 }

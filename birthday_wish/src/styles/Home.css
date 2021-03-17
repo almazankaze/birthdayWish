@@ -1,5 +1,47 @@
 .home {
+}
+
+.createContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.5rem;
+}
+
+.birthdaysContainer {
   display: grid;
   place-items: center;
   height: 25vh;
+}
+
+.birthdaysContainer > h2 {
+  margin: 1.5rem;
+}
+
+.birthdays {
+  width: 20rem;
+  display: grid;
+  place-items: center;
+}
+
+.birthdayLink {
+  margin: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .createContainer {
+    align-items: flex-end;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .birthdays {
+    background-color: white;
+    width: 20rem;
+    display: grid;
+    place-items: center;
+
+    border: 1px solid gray;
+    border-radius: 1rem;
+  }
 }

@@ -34,12 +34,26 @@ function Home() {
   } else
     return (
       <div className="home">
-        <Link to="/createbirthday">Create Board</Link>
-        {birthdays.map((birthday) => (
-          <Link key={birthday.id} to={`birthdayboard/${birthday.id}`}>
-            {`${birthday.data.firstname} ${birthday.data.lastname} `}
+        <div className="createContainer">
+          <Link to="/createbirthday" className="btn primary-btn">
+            Create Board
           </Link>
-        ))}
+        </div>
+
+        <div className="birthdaysContainer">
+          <h2>Birthdays!</h2>
+          <div className="birthdays">
+            {birthdays.map((birthday) => (
+              <Link
+                key={birthday.id}
+                to={`birthdayboard/${birthday.id}`}
+                className="birthdayLink"
+              >
+                {`${birthday.data.firstname} ${birthday.data.lastname} `}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     );
 }

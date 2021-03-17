@@ -1,0 +1,62 @@
+.newBirthdayForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.birthdayForm {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.birthdayForm > h2 {
+  padding: 1rem;
+}
+
+.birthdayForm > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.birthdayForm > form > input {
+  margin-bottom: 1rem;
+  outline-width: 0;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 999px;
+  background-color: #eff2f5;
+}
+
+.birthdayForm > form > button {
+  width: 30%;
+}
+
+.danger-span {
+  margin-top: 0.5rem;
+  color: red;
+}
+
+.successContainer > h2 {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .birthdayForm {
+    flex-direction: column;
+  }
+
+  .birthdayForm > form > input {
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+  .birthdayForm > form > button {
+    width: 50%;
+  }
+}

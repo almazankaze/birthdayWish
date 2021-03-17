@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import HeaderOption from "./HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import MessageIcon from "@material-ui/icons/Message";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import AddIcon from "@material-ui/icons/Add";
@@ -12,6 +12,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar, IconButton } from "@material-ui/core";
 import { useStateValue } from "../StateProvider";
 import { Link } from "react-router-dom";
+import CakeIcon from "../images/cake.png";
 
 const Header = () => {
   const [{ user }] = useStateValue();
@@ -20,10 +21,7 @@ const Header = () => {
     <div className="header">
       <div className="header__left">
         <Link to="/" className="home__logo">
-          <img
-            src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
-            alt="home"
-          />
+          <img src={CakeIcon} alt="home" />
         </Link>
 
         <div className="header__search">
@@ -35,14 +33,11 @@ const Header = () => {
       <div className="header__middle">
         <HeaderOption Icon={HomeIcon} title="Home" />
         <HeaderOption Icon={SupervisorAccountIcon} title="My Groups" />
-        <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
+        <HeaderOption Icon={CalendarTodayIcon} title="Calender" />
         <HeaderOption Icon={MessageIcon} title="Messaging" />
       </div>
 
       <div className="header__right">
-        <div className="header__info">
-          <Avatar src={user.photoURL} />
-        </div>
         <IconButton>
           <AddIcon />
         </IconButton>
@@ -52,6 +47,9 @@ const Header = () => {
         <IconButton>
           <ExpandMoreIcon />
         </IconButton>
+        <div className="header__info">
+          <Avatar src={user.photoURL} />
+        </div>
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ function Login() {
 
   return (
     <div className="login">
+      <h1>Birthday Board</h1>
       <Button type="submit" onClick={signIn}>
         Sign In
       </Button>
