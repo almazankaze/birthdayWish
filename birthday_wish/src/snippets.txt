@@ -38,3 +38,14 @@ db.collection("birthdays")
       .then((result) => {
         result.collection("posts").add();
       });
+
+
+      <IconButton>
+          <AddIcon />
+        </IconButton>
+        <IconButton>
+          <NotificationsIcon />
+        </IconButton>
+        <IconButton>
+          <ExpandMoreIcon />
+        </IconButton>

@@ -7,12 +7,12 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import MessageIcon from "@material-ui/icons/Message";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar, IconButton } from "@material-ui/core";
 import { useStateValue } from "../StateProvider";
 import { Link } from "react-router-dom";
 import CakeIcon from "../images/cake.png";
+import Logout from "./Logout";
 
 const Header = () => {
   const [{ user }] = useStateValue();
@@ -39,17 +39,15 @@ const Header = () => {
 
       <div className="header__right">
         <IconButton>
-          <AddIcon />
+          <ExpandMoreIcon />
         </IconButton>
         <IconButton>
           <NotificationsIcon />
         </IconButton>
-        <IconButton>
-          <ExpandMoreIcon />
-        </IconButton>
         <div className="header__info">
           <Avatar src={user.photoURL} />
         </div>
+        <Logout />
       </div>
     </div>
   );

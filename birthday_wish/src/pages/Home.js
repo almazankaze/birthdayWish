@@ -5,6 +5,7 @@ import "../styles/Home.css";
 import db from "../firebase";
 import Loading from "../components/Loader";
 import ErrorComponent from "../components/ErrorComponent";
+import Logout from "../components/Logout";
 
 function Home() {
   const fetchBirthdays = async () => {
