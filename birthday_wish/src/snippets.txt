@@ -38,10 +38,3 @@ db.collection("birthdays")
       .then((result) => {
         result.collection("posts").add();
       });
-
-      width: 20rem;
-  height: fit-content;
-  border: 1px solid gray;
-  border-radius: 1rem;
-  margin: 1rem 0.5rem;
-  background-color: white;
