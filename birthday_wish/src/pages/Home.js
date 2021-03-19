@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import "../styles/Home.css";
 import db from "../firebase";
 import Loading from "../components/Loader";
+import ErrorComponent from "../components/ErrorComponent";
 
 function Home() {
   const fetchBirthdays = async () => {
@@ -11,15 +12,20 @@ function Home() {
       dispatch({ type: "LOADING" });
 
       // get all birthdays from database
-      const snapShot = await db.collection("birthdays").orderBy('created', 'desc').get();
+      const snapShot = await db
+        .collection("birthdays")
+        .orderBy("created", "desc")
+        .get();
       const array = snapShot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
       }));
 
       dispatch({ type: "DISPLAY_BIRTHDAYS", payload: array });
+      setError(false);
     } catch (error) {
-      // dispatch({ type: "ERROR" });
+      setError(true);
+      dispatch({ type: "LOADING" });
     }
   };
 
@@ -28,9 +34,12 @@ function Home() {
   }, []);
 
   const [{ birthdays, loading }, dispatch] = useStateValue();
+  const [error, setError] = useState(false);
 
   if (loading) {
     return <Loading />;
+  } else if (error) {
+    return <ErrorComponent />;
   } else
     return (
       <div className="home">

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import Loading from "../components/Loader";
 import background from "../images/birthdayBG.jpg";
+import ErrorComponent from "../components/ErrorComponent";
 
 function BirthdayBoard() {
   const [birthday, setBirthday] = useState(null);
@@ -40,8 +41,10 @@ function BirthdayBoard() {
       }
 
       dispatch({ type: "DISPLAY_POSTS" });
+      setError(false);
     } catch (error) {
-      // dispatch({ type: "ERROR" });
+      setError(true);
+      dispatch({ type: "LOADING" });
     }
   };
 
@@ -51,14 +54,17 @@ function BirthdayBoard() {
   }, [birthdayId]);
 
   const [{ loading }, dispatch] = useStateValue();
+  const [error, setError] = useState(false);
 
   if (loading) {
     return <Loading />;
+  } else if (error) {
+    return <ErrorComponent />;
   } else {
     return (
       <div
         className="birthdayBoard"
-        style={{ backgroundImage: `url(${background})` }}
+        style={{ backgroundImage: `url(${background})`, minHeight: "100vh" }}
       >
         <MessageSender birthday={birthday} />
         <Posts posts={posts} />

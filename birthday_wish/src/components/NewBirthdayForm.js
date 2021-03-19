@@ -5,6 +5,7 @@ import { useStateValue } from "../StateProvider";
 import Loading from "./Loader";
 import "../styles/NewBirthdayForm.css";
 import firebase from "firebase";
+import ErrorComponent from "./ErrorComponent";
 
 function NewBirthdayForm() {
   const addBirthday = async () => {
@@ -24,8 +25,10 @@ function NewBirthdayForm() {
         });
 
       dispatch({ type: "ADD_BIRTHDAY" });
+      setError(false);
     } catch (error) {
-      // dispatch({ type: "ERROR" });
+      setError(true);
+      dispatch({ type: "LOADING" });
     }
   };
   const createBirthday = (e) => {
@@ -34,19 +37,22 @@ function NewBirthdayForm() {
     if (firstName && lastName) {
       addBirthday();
     } else {
-      setError(true);
+      setFieldError(true);
     }
   };
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [newId, setNewId] = useState("");
+  const [fieldError, setFieldError] = useState(false);
   const [error, setError] = useState(false);
 
   const [{ loading }, dispatch] = useStateValue();
 
   if (loading) {
     return <Loading />;
+  } else if (error) {
+    return <ErrorComponent />;
   } else {
     return (
       <div className="newBirthdayForm">
@@ -79,7 +85,7 @@ function NewBirthdayForm() {
                 Create
               </button>
 
-              {error ? (
+              {fieldError ? (
                 <span className="danger-span">All fields should be filled</span>
               ) : (
                 " "

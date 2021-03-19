@@ -23,7 +23,7 @@ const reducer = (state, action) => {
     case actionTypes.LOADING:
       return {
         ...state,
-        loading: true,
+        loading: !state.loading,
       };
     case actionTypes.DISPLAY_POSTS:
       return {
