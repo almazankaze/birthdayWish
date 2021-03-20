@@ -35,4 +35,8 @@
   .post {
     width: 100%;
   }
+
+  .post__topInfo > h3 {
+    word-break: break-all;
+  }
 }
